@@ -1,0 +1,14 @@
+services:
+  pelican-wings:
+    image: ghcr.io/pelican-dev/wings:latest
+    restart: unless-stopped
+    volumes:
+      - $BASE_PATH/wings/data:/etc/pelican
+      - ../files/config.yml:/etc/pelican/config.yml
+      - $BASE_PATH/wings/servers:$BASE_PATH/wings/servers
+      - $BASE_PATH/wings/temp:$BASE_PATH/wings/temp
+      - $BASE_PATH/wings/logs:$BASE_PATH/wings/logs
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker/containers:/var/lib/docker/containers
+    environment:
+      TZ: $TIMEZONE
