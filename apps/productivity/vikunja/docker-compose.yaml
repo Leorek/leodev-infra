@@ -1,0 +1,18 @@
+services:
+    vikunja:
+        image: vikunja/vikunja
+        environment:
+            VIKUNJA_SERVICE_PUBLICURL: ${VIKUNJA_SERVICE_PUBLICURL}
+            VIKUNJA_DATABASE_HOST: ${VIKUNJA_DATABASE_HOST}
+            VIKUNJA_DATABASE_PORT: ${VIKUNJA_DATABASE_PORT}
+            VIKUNJA_DATABASE_PASSWORD: ${VIKUNJA_DATABASE_PASSWORD}
+            VIKUNJA_DATABASE_TYPE: ${VIKUNJA_DATABASE_TYPE}
+            VIKUNJA_DATABASE_USER: ${VIKUNJA_DATABASE_USER}
+            VIKUNJA_DATABASE_DATABASE: ${VIKUNJA_DATABASE_NAME}
+            VIKUNJA_SERVICE_JWTSECRET: ${VIKUNJA_SERVICE_JWTSECRET}
+        volumes:
+            - vikunja-data:/app/vikunja/files
+        restart: unless-stopped
+
+volumes:
+  vikunja-data:
