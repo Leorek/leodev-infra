@@ -14,10 +14,6 @@ services:
       APP_URL: "https://pelican.leorek.dev"
       ADMIN_EMAIL: japc93k@gmail.com
       TRUSTED_PROXIES: $TRUSTED_PROXIES
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.$PANEL_TRAEFIK_NAME.rule=Host(`$PANEL_URL`)
-      - traefik.http.services.$PANEL_TRAEFIK_NAME.loadbalancer.server.port=$PANEL_PORT
 
 volumes:
   pelican-data:
