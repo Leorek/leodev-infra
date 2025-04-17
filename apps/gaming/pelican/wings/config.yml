@@ -18,8 +18,18 @@ allowed_mounts: []
 remote: 'http://gaming-pelican-panel-ykl7xt-ec52c7-5-9-67-73.traefik.me'
 docker:
   network:
-    interface: 172.18.0.1
+    interface: 172.19.0.1
+    dns:
+    - 1.1.1.1
+    - 1.0.0.1
+    name: pelican_nw
+    ispn: false
+    driver: bridge
+    network_mode: pelican_nw
+    is_internal: false
+    enable_icc: true
+    network_mtu: 1500
     interfaces:
       v4:
-        subnet: 172.18.0.0/16
-        gateway: 172.18.0.1
+        subnet: 172.19.0.0/16
+        gateway: 172.19.0.1
