@@ -4,7 +4,7 @@ token_id: ybUT96GLFZsITHT4
 token: equjy0Ps5owhggrxvrrweEbPiKR72SS4NOcI0R0flYpWGlFUJBdACXfcuP2aQZ3J
 api:
   host: 0.0.0.0
-  port: 8080
+  port: 1847
   ssl:
     enabled: false
     cert: /etc/letsencrypt/live/5.9.67.73/fullchain.pem

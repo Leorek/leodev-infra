@@ -27,6 +27,8 @@ services:
     tty: true
     depends_on:
       - pelican-panel
+    ports:
+      - "1847:1847"
     environment:
       TRUSTED_PROXIES: "*"
       TZ: $TIMEZONE
