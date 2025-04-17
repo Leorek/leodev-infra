@@ -21,9 +21,7 @@ services:
       - "/var/log/pelican/:/var/log/pelican/"
       - "/tmp/pelican/:/tmp/pelican/"
       - "/etc/ssl/certs:/etc/ssl/certs:ro"
-      # Optional legacy or cert volumes:
-      # - "/srv/daemon-data/:/srv/daemon-data/"
-      # - "/etc/letsencrypt/:/etc/letsencrypt/"
+      - "./config.yml:/etc/pelican/config.yml"
 
 networks:
   pelican:
