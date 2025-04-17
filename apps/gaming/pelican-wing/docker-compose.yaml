@@ -1,14 +1,30 @@
+version: "3.9"
+
 services:
-  pelican-wings:
+  wings:
     image: ghcr.io/pelican-dev/wings:latest
-    restart: unless-stopped
-    volumes:
-      - $BASE_PATH/wings/data:/etc/pelican
-      - ../files/config.yml:/etc/pelican/config.yml
-      - $BASE_PATH/wings/servers:$BASE_PATH/wings/servers
-      - $BASE_PATH/wings/temp:$BASE_PATH/wings/temp
-      - $BASE_PATH/wings/logs:$BASE_PATH/wings/logs
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /var/lib/docker/containers:/var/lib/docker/containers
+    restart: always
+    networks:
+      - pelican
+    tty: true
     environment:
+      TRUSTED_PROXIES: "*"
       TZ: $TIMEZONE
+      WINGS_UID: 988
+      WINGS_GID: 988
+      WINGS_USERNAME: pelican
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/var/lib/docker/containers/:/var/lib/docker/containers/"
+      - "/etc/pelican/:/etc/pelican/"
+      - "/var/lib/pelican/:/var/lib/pelican/"
+      - "/var/log/pelican/:/var/log/pelican/"
+      - "/tmp/pelican/:/tmp/pelican/"
+      - "/etc/ssl/certs:/etc/ssl/certs:ro"
+      # Optional legacy or cert volumes:
+      # - "/srv/daemon-data/:/srv/daemon-data/"
+      # - "/etc/letsencrypt/:/etc/letsencrypt/"
+
+networks:
+  pelican:
+    external: true
