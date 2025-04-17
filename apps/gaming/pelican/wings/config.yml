@@ -10,30 +10,16 @@ api:
     cert: /etc/letsencrypt/live/5.9.67.73/fullchain.pem
     key: /etc/letsencrypt/live/5.9.67.73/privkey.pem
   upload_limit: 256
-docker:
-  network:
-    interface: 172.18.0.1
-    dns:
-    - 1.1.1.1
-    - 1.0.0.1
-    name: pelican_nw
-    ispn: false
-    IPv6: true
-    driver: bridge
-    network_mode: pelican_nw
-    is_internal: false
-    enable_icc: true
-    network_mtu: 1500
-    interfaces:
-      v4:
-        subnet: 172.18.0.0/16
-        gateway: 172.18.0.1
-      v6:
-        subnet: fdba:17c8:6c94::/64
-        gateway: fdba:17c8:6c94::1011
 system:
   data: /var/lib/pelican/volumes
   sftp:
     bind_port: 2022
 allowed_mounts: []
 remote: 'http://gaming-pelican-panel-ykl7xt-ec52c7-5-9-67-73.traefik.me'
+docker:
+  network:
+    interface: 172.18.0.1
+    interfaces:
+      v4:
+        subnet: 172.18.0.0/16
+        gateway: 172.18.0.1
