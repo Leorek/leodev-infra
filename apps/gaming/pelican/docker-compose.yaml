@@ -11,8 +11,8 @@ services:
       TZ: $TIMEZONE
       APP_TIMEZONE: $TIMEZONE
       APP_ENV: production
-      APP_URL: "https://pelican.leorek.dev"
-      ADMIN_EMAIL: japc93k@gmail.com
+      APP_URL: $APP_URL
+      ADMIN_EMAIL: $ADMIN_EMAIL
       TRUSTED_PROXIES: $TRUSTED_PROXIES
 
 volumes:
