@@ -1,5 +1,5 @@
 services:
-  panel:
+  pelican-panel:
     image: ghcr.io/pelican-dev/panel:latest
     restart: unless-stopped
     networks:
@@ -24,7 +24,7 @@ services:
       - pelican
     tty: true
     depends_on:
-      - panel
+      - pelican-panel
     environment:
       TRUSTED_PROXIES: "*"
       TZ: $TIMEZONE
