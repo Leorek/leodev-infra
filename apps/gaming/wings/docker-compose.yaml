@@ -20,3 +20,7 @@ services:
       - "/tmp/pelican/:/tmp/pelican/"
       - "/etc/ssl/certs:/etc/ssl/certs:ro"
       - "./config.yml:/etc/pelican/config.yml"
+
+  networks:
+    wings_nw:
+      external: true
