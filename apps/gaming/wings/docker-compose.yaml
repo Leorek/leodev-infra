@@ -2,7 +2,8 @@ services:
   wings:
     image: ghcr.io/pelican-dev/wings:latest
     restart: always
-    network_mode: wings_nw
+    networks:
+      - wings_nw
     tty: true
     ports:
       - "1847:1847"
@@ -24,4 +25,13 @@ services:
 
 networks:
   wings_nw:
-    external: true
+    name: wings_nw
+    driver: bridge
+    ipam:
+      config:
+        - subnet: "172.19.0.0/16"
+          gateway: "172.19.0.1"
+    driver_opts:
+      com.docker.network.bridge.name: wings_nw
+      com.docker.network.bridge.enable_icc: "true"
+      com.docker.network.driver.mtu: "1500"
