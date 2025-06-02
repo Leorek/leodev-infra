@@ -1,0 +1,34 @@
+services:
+  wings:
+    image: ghcr.io/pelican-dev/wings:latest
+    restart: always
+    networks:
+      - wings_network
+    tty: true
+    ports:
+      - "1847:1847"
+    environment:
+      TRUSTED_PROXIES: "*"
+      TZ: ${TIMEZONE}
+      WINGS_UID: 988
+      WINGS_GID: 988
+      WINGS_USERNAME: pelican
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/var/lib/docker/containers/:/var/lib/docker/containers/"
+      - "/etc/pelican/:/etc/pelican/"
+      - "/var/lib/pelican/:/var/lib/pelican/"
+      - "/var/log/pelican/:/var/log/pelican/"
+      - "/tmp/pelican/:/tmp/pelican/"
+      - "/etc/ssl/certs:/etc/ssl/certs:ro"
+      - "./config.yml:/etc/pelican/config.yml"
+
+networks:
+  wings_network:
+    name: wings_nw
+    driver: bridge
+    ipam:
+      config:
+        - subnet: "172.21.0.0/16"
+    driver_opts:
+      com.docker.network.bridge.name: wings_nw 

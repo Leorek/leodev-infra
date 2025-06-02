@@ -19,32 +19,6 @@ services:
       ADMIN_EMAIL: $ADMIN_EMAIL
       TRUSTED_PROXIES: $TRUSTED_PROXIES
   
-  wings:
-    image: ghcr.io/pelican-dev/wings:latest
-    restart: always
-    networks:
-      - pelican
-    tty: true
-    depends_on:
-      - pelican-panel
-    ports:
-      - "1847:1847"
-    environment:
-      TRUSTED_PROXIES: "*"
-      TZ: $TIMEZONE
-      WINGS_UID: 988
-      WINGS_GID: 988
-      WINGS_USERNAME: pelican
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-      - "/var/lib/docker/containers/:/var/lib/docker/containers/"
-      - "/etc/pelican/:/etc/pelican/"
-      - "/var/lib/pelican/:/var/lib/pelican/"
-      - "/var/log/pelican/:/var/log/pelican/"
-      - "/tmp/pelican/:/tmp/pelican/"
-      - "/etc/ssl/certs:/etc/ssl/certs:ro"
-      - "./wings/config.yml:/etc/pelican/config.yml"
-
 volumes:
   pelican-data:
   pelican-logs:
