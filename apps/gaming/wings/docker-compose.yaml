@@ -2,6 +2,7 @@ services:
   wings:
     image: ghcr.io/pelican-dev/wings:latest
     restart: always
+    network_mode: wings_nw
     tty: true
     ports:
       - "1847:1847"
