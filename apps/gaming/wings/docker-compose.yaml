@@ -1,6 +1,6 @@
 services:
   wings:
-    image: ghcr.io/pelican-dev/wings:latest
+    image: ghcr.io/pelican-dev/wings:v1.0.0-beta15
     restart: always
     networks:
       - wings_nw
