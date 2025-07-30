@@ -6,7 +6,7 @@ api:
   host: 0.0.0.0
   port: 1847
   ssl:
-    enabled: false
+    enabled: true
     cert: /etc/letsencrypt/live/5.9.67.73/fullchain.pem
     key: /etc/letsencrypt/live/5.9.67.73/privkey.pem
   upload_limit: 256
