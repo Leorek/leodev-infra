@@ -7,8 +7,6 @@ api:
   port: 1847
   ssl:
     enabled: true
-    cert: /etc/letsencrypt/live/5.9.67.73/fullchain.pem
-    key: /etc/letsencrypt/live/5.9.67.73/privkey.pem
   upload_limit: 256
 system:
   data: /var/lib/pelican/volumes
