@@ -1,6 +1,6 @@
 services:
   pelican-panel:
-    image: ghcr.io/pelican-dev/panel:v1.0.0-beta25
+    image: ghcr.io/pelican-dev/panel:v1.0.0-beta28
     restart: unless-stopped
     networks:
       - pelican
